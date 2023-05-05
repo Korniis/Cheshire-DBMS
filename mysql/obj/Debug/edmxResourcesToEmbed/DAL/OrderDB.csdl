@@ -1,0 +1,62 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="OrderDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="AirTransport">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="MenberId" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="CustomId" Type="Int32" Nullable="false" />
+    <Property Name="OrderNumber" Type="String" MaxLength="64" FixedLength="false" Unicode="true" />
+    <Property Name="SourcePlace" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="TargetPlace" Type="String" MaxLength="64" FixedLength="false" Unicode="true" />
+    <Property Name="Tag" Type="String" MaxLength="512" FixedLength="false" Unicode="true" />
+    <Property Name="InsertDate" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="AirTransportDetails">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="AirTransportId" Type="Int32" />
+    <Property Name="ReceiveDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Count" Type="Int32" />
+    <Property Name="Weight" Type="Double" />
+    <Property Name="Volume" Type="Double" />
+    <Property Name="Height" Type="Double" />
+    <Property Name="Width" Type="Double" />
+    <Property Name="Length" Type="Double" />
+    <Property Name="insertDate" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="Customer">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" />
+    <Property Name="MemberId" Type="Int32" />
+    <Property Name="Name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Telphone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Nation" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Address" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="InsertDate" Type="DateTime" Precision="3" />
+    <Property Name="Tag" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Member">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="32" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Password" Type="String" MaxLength="32" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Level" Type="Int32" Nullable="false" />
+    <Property Name="InsertDate" Type="DateTime" Precision="3" />
+    <Property Name="Tag" Type="String" MaxLength="32" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityContainer Name="OrderDBEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="AirTransport" EntityType="Self.AirTransport" />
+    <EntitySet Name="AirTransportDetails" EntityType="Self.AirTransportDetails" />
+    <EntitySet Name="Customer" EntityType="Self.Customer" />
+    <EntitySet Name="Member" EntityType="Self.Member" />
+  </EntityContainer>
+</Schema>

@@ -1,0 +1,62 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="OrderDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="AirTransport">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="MenberId" Type="nchar" MaxLength="10" />
+    <Property Name="CustomId" Type="int" Nullable="false" />
+    <Property Name="OrderNumber" Type="nvarchar" MaxLength="64" />
+    <Property Name="SourcePlace" Type="nvarchar" MaxLength="50" />
+    <Property Name="TargetPlace" Type="nvarchar" MaxLength="64" />
+    <Property Name="Tag" Type="nvarchar" MaxLength="512" />
+    <Property Name="InsertDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="AirTransportDetails">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="AirTransportId" Type="int" />
+    <Property Name="ReceiveDate" Type="datetime" Nullable="false" />
+    <Property Name="Count" Type="int" />
+    <Property Name="Weight" Type="float" />
+    <Property Name="Volume" Type="float" />
+    <Property Name="Height" Type="float" />
+    <Property Name="Width" Type="float" />
+    <Property Name="Length" Type="float" />
+    <Property Name="insertDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="Customer">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" Nullable="false" />
+    <Property Name="MemberId" Type="int" />
+    <Property Name="Name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="Telphone" Type="nvarchar" MaxLength="50" />
+    <Property Name="Nation" Type="nvarchar" MaxLength="50" />
+    <Property Name="Address" Type="nvarchar" MaxLength="128" />
+    <Property Name="Description" Type="ntext" />
+    <Property Name="InsertDate" Type="datetime" />
+    <Property Name="Tag" Type="nchar" MaxLength="10" />
+  </EntityType>
+  <EntityType Name="Member">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="32" Nullable="false" />
+    <Property Name="Password" Type="nvarchar" MaxLength="32" Nullable="false" />
+    <Property Name="Level" Type="int" Nullable="false" />
+    <Property Name="InsertDate" Type="datetime" />
+    <Property Name="Tag" Type="nvarchar" MaxLength="32" />
+  </EntityType>
+  <EntityContainer Name="OrderDBModelStoreContainer">
+    <EntitySet Name="AirTransport" EntityType="Self.AirTransport" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AirTransportDetails" EntityType="Self.AirTransportDetails" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Customer" EntityType="Self.Customer" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Member" EntityType="Self.Member" Schema="dbo" store:Type="Tables" />
+  </EntityContainer>
+</Schema>
